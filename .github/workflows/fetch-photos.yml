@@ -1,0 +1,38 @@
+name: Fetch Pexels photos
+
+# يشتغل لما يتعدّل requests.txt، أو يدوياً من تبويب Actions
+on:
+  push:
+    paths:
+      - requests.txt
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: fetch-photos
+  cancel-in-progress: false
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Download requested photos
+        env:
+          PEXELS_API_KEY: ${{ secrets.PEXELS_API_KEY }}
+        run: python3 scripts/fetch_pexels.py requests.txt photos
+
+      - name: Commit new photos
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add photos
+          if git diff --cached --quiet; then
+            echo "No new photos."
+          else
+            git commit -m "Fetch photos from Pexels"
+            git push
+          fi
