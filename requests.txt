@@ -2,3 +2,15 @@
 # أي تعديل هنا يشغّل التحميل تلقائياً، والصور تنزل في photos/
 12823541  desert-men-sunset
 12823577  sudan-group-white
+
+# --- poster 2 candidates: smiling man ---
+5416864   man-traditional-smiling
+12776490  man-thumbs-up
+5875314   man-thobe-raising-hands
+7129611   man-white-thobe
+8367624   man-happy-raising-hand
+5982112   man-happy-raising-arms
+20216001  man-turban-smiling
+# --- device candidates ---
+4218546   router-white-yellow
+29711663  router-white-modern
